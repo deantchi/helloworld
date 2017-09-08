@@ -36,18 +36,19 @@ booleen is_master ( "${env.BRANCH_NAME}" == "master")
 	}
 
 	catch (e) {
-		println("Caught" ${e}");
+		currentBuild.result = "Failed"
+		def errormsg = 'your shit sucks'
 		throw e
-		string recipient = ${emailto}
-
-		mail subject:	"${env.JOB_NAME} ($(env.BUILD_NUMBER}) failed",
-		body:			"Your shit sucks",
-		to:				recipient,
-		replyto:		recipient,
-		from:			'noreply@ci.jenkins.io'
 	}
 
 	finally {
+		string recipient = ${emailto}
+		mail subject:	"${env.JOB_NAME} (${env.BUILD_NUMBER})",
+		body:			"${errormsg}",
+		to:				recipient,
+		replyto:		recipient,
+		from:			'noreply@ci.jenkins.io'
+
 
 	}
 }
