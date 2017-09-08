@@ -13,7 +13,7 @@ def emailto = 'deantchi@gmail.com'
 //defines artifactory
 //def artifactory_repo = ''
 
-booleen is_master ( "${env.BRANCH_NAME}" == "master")
+//booleen is_master ( "${env.BRANCH_NAME}" == "master")
 
     //speficy node to build on
 	node('builder-bob') {
