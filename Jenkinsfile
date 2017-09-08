@@ -15,37 +15,39 @@ def emailto = 'deantchi@gmail.com'
 
 booleen is_master ( "${env.BRANCH_NAME}" == "master")
 
-try {
     //speficy node to build on
 	node('builder-bob') {
-		stage('Clean workspace') {
-			deleteDir()
-			sh 'ls -lah'
-		}
 
-		stage('Checkout SCM') {
-			checkout scm
-		}
+	try {
+			stage('Clean workspace') {
+				deleteDir()
+				sh 'ls -lah'
+			}
 
-		stage('Building') {
-		}
+			stage('Checkout SCM') {
+				checkout scm
+			}
 
-		stage('Archive') {
-		}
-}
+			stage('Building') {
+			}
 
-catch (e) {
-	echo "Caught" ${exc}"
-	throw e
-	string recipient = ${emailto}
+			stage('Archive') {
+			}
+	}
 
-	mail subject:	"${env.JOB_NAME} ($(env.BUILD_NUMBER}) failed",
-	body:			"Your shit sucks",
-	to:				recipient,
-	replyto:		recipient,
-	from:			'noreply@ci.jenkins.io'
-}
+	catch (e) {
+		echo "Caught" ${exc}"
+		throw e
+		string recipient = ${emailto}
 
-finally {
+		mail subject:	"${env.JOB_NAME} ($(env.BUILD_NUMBER}) failed",
+		body:			"Your shit sucks",
+		to:				recipient,
+		replyto:		recipient,
+		from:			'noreply@ci.jenkins.io'
+	}
 
+	finally {
+
+	}
 }
