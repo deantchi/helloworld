@@ -30,6 +30,10 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 				checkout scm
 			}
 
+	String archive_dir = "output"
+	String output_dir = "${archive_dir}/${getVersion()}"
+
+
 			stage('Archive in Jenkins') {
 				dir(archive_dir) {
 					archiveartifacts "**"
