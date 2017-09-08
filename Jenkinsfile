@@ -40,6 +40,9 @@ def emailto = 'deantchi@gmail.com'
 	finally {
 
 	}
+}
+
+
 
 //fetches "Version_File", read, and pulls version number
 String getVersion() {
