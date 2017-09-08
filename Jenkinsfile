@@ -7,7 +7,7 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
-version = nul;
+version = null
 def emailto = 'deantchi@gmail.com'
 
 
