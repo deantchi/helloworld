@@ -36,7 +36,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
 			stage('Archive in Jenkins') {
 				dir(archive_dir) {
-					archiveartifacts "**"
+					archiveArtifacts "**"
 				}
 			}
 
