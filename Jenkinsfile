@@ -42,7 +42,7 @@ def emailto = 'deantchi@gmail.com'
 	}
 
 	finally {
-		string recipient = ${emailto}
+		string recipient = "${emailto}"
 		mail subject:	"${env.JOB_NAME} (${env.BUILD_NUMBER})",
 		body:			"${errormsg}",
 		to:				recipient,
