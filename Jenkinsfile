@@ -36,19 +36,10 @@ def emailto = 'deantchi@gmail.com'
 	}
 
 	catch (e) {
-		currentBuild.result = "Failed"
-		def errormsg = 'Failed'
 		throw e
 	}
 
 	finally {
-		string recipient = "${emailto}"
-		mail subject:	"${env.JOB_NAME} (${env.BUILD_NUMBER})",
-		body:			"${errormsg}",
-		to:				recipient,
-		replyto:		recipient,
-		from:			'noreply@ci.jenkins.io'
-
 
 	}
 }
