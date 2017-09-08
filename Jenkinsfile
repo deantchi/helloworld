@@ -36,7 +36,7 @@ booleen is_master ( "${env.BRANCH_NAME}" == "master")
 	}
 
 	catch (e) {
-		println ("Caught" ${e}");
+		println("Caught" ${e}");
 		throw e
 		string recipient = ${emailto}
 
