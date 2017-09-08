@@ -30,10 +30,6 @@ def emailto = 'deantchi@gmail.com'
 			}
 
 			stage('Building') {
-				string getVersion()
-				if (!version) {
-					version = readFile('VERSION').replace(/[\n\r]/, '')
-				}
 			}
 	}
 
@@ -44,4 +40,10 @@ def emailto = 'deantchi@gmail.com'
 	finally {
 
 	}
-}
+
+//fetches "Version_File", read, and pulls version number
+String getVersion() {
+	if (!version) {
+		version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
+		} 
+} 
