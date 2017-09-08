@@ -34,9 +34,9 @@ try {
 		}
 }
 
-catch (exc) {
+catch (e) {
 	echo "Caught" ${exc}"
-
+	throw e
 	string recipient = ${emailto}
 
 	mail subject:	"${env.JOB_NAME} ($(env.BUILD_NUMBER}) failed",
