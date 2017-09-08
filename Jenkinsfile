@@ -37,7 +37,7 @@ def emailto = 'deantchi@gmail.com'
 
 	catch (e) {
 		currentBuild.result = "Failed"
-		def errormsg = 'your shit sucks'
+		def errormsg = 'Failed'
 		throw e
 	}
 
