@@ -45,5 +45,6 @@ def emailto = 'deantchi@gmail.com'
 String getVersion() {
 	if (!version) {
 		version = readFile('VERSION_FILE').replaceAll(/[\n\r]/, '')
-		} 
+		}
+	return version 
 } 
