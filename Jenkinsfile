@@ -7,6 +7,7 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
+version = nul;
 def emailto = 'deantchi@gmail.com'
 
 
@@ -29,9 +30,10 @@ def emailto = 'deantchi@gmail.com'
 			}
 
 			stage('Building') {
-			}
-
-			stage('Archive') {
+				string getVersion()
+				if (!version) {
+					version = readFile('VERSION').replace(/[\n\r]/, '')
+				}
 			}
 	}
 
