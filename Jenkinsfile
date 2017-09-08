@@ -30,8 +30,12 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 				checkout scm
 			}
 
-			stage('Building') {
+			stage('Archive in Jenkins') {
+				dir(archive_dir) {
+					archiveartifacts "**"
+				}
 			}
+
 	}
 
 	catch (e) {
