@@ -7,12 +7,13 @@ import groovy.json.JsonBuilder
 import groovy.json.JsonOutput
 import java.net.URL
 
+//name of local artifactory server
+artifactserver = Artifactory.server 'local_artifactory'
+
 version = null
-def emailto = 'deantchi@gmail.com'
 
-
-//defines artifactory
-//def artifactory_repo = ''
+//defines artifactory repo
+def artifactory_repo = 'helloworld'
 
 //booleen is_master ( "${env.BRANCH_NAME}" == "master")
 
