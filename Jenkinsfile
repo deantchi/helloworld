@@ -15,7 +15,7 @@ version = null
 //defines artifactory repo
 def artifactory_repo = 'helloworld'
 
-boolean is_master ( "${env.BRANCH_NAME}" == "master" )
+boolean is_master ("${env.BRANCH_NAME}" == "master")
 
     //speficy node to build on
 	node('builder-bob') {
