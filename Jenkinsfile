@@ -21,7 +21,7 @@ properties ([
 
     // set url for diff links to gh
     [ $class: 'GithubProjectProperty',
-      displayMame: ''
+      displayMame: '',
       projectUrlStr: "${getGitHubURL(scmUrl)}" ]
 ])
 //defines artifactory repo
