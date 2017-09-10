@@ -9,6 +9,9 @@ import java.net.URL
 
 //name of local artifactory server
 def server = Artifactory.server 'local_artifactory'
+def scmUrl = scm.getUserRemoteConfigs()[0].getUrl()
+def gh_cid = scm.getUserRemoteCOnfigs()[0].getCredentialsId()
+def artifactory_repo = 'helloworld'
 
 version = null
 
@@ -19,8 +22,6 @@ properties ([
       daysToKeepStr: '',
       numToKeepStr: '30') )
 ])
-//defines artifactory repo
-def artifactory_repo = 'helloworld'
 
 boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
@@ -44,16 +45,26 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 				dir(archive_dir) {
 					archiveArtifacts "**"
 
-          //defines artifactory upload spec
-          def uploadSpec = """{
+          if ( is_master ) {
+
+          // define version and set Jenkins display name
+          String v = getVersion()
+          currentBuild.DisplayName = "#${env.BUILD_NUMBER} - v${v}"
+          applyTag(gh_cid, "v${v}-${env.BUILD_NUMBER}", scmUrl)
+
+          // defines artifactory upload spec
+          String path = "${artifactory_repo}/helloworld/${v}-${env.BUILD_NUMBER}"
+          String uploadspec = """{
             "files": [
               {
                 "pattern": "**",
                 "target": "${version}/"
+                "flat": "false"
               }
            ]
           }"""
           server.upload(uploadSpec)
+          }
 				}
 			}
 
