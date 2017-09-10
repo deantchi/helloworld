@@ -51,11 +51,14 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
           // defines artifactory upload spec
           String path = "${artifactory_repo}/${v}-${env.BUILD_NUMBER}"
+
           String upload_spec = """{
             "files": [
               {
                 "pattern": "**",
+
                 "target": "$path/",
+
                 "flat": "false"
               }
            ]
