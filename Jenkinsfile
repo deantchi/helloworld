@@ -31,7 +31,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 			}
 
 	String archive_dir = "output"
-	String output_dir = "${archive_dir}/${getVersion()}/files"
+	String output_dir = "helloworld/${archive_dir}/${getVersion()}/files/"
 
 			stage('Archive File') {
 				dir(archive_dir) {
