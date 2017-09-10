@@ -9,8 +9,6 @@ import java.net.URL
 
 //name of local artifactory server
 def server = Artifactory.server 'local_artifactory'
-def scmUrl = scm.getUserRemoteConfigs()[0].getUrl()
-def gh_cid = scm.getUserRemoteCOnfigs()[0].getCredentialsId()
 def artifactory_repo = 'helloworld'
 
 version = null
@@ -50,7 +48,6 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
           // define version and set Jenkins display name
           String v = getVersion()
           currentBuild.DisplayName = "#${env.BUILD_NUMBER} - v${v}"
-          applyTag(gh_cid, "v${v}-${env.BUILD_NUMBER}", scmUrl)
 
           // defines artifactory upload spec
           String path = "${artifactory_repo}/helloworld/${v}-${env.BUILD_NUMBER}"
