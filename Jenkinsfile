@@ -17,12 +17,7 @@ properties ([
     buildDiscarder( logRotator(artifactDaysToKeepStr: '',
       artifactNumToKeep: '3',
       daysToKeepStr: '',
-      numToKeepStr: '30') ),
-
-    // set url for diff links to gh
-    [ $class: 'GithubProjectProperty',
-      displayMame: '',
-      projectUrlStr: "${getGitHubURL(scmUrl)}" ]
+      numToKeepStr: '30') )
 ])
 //defines artifactory repo
 def artifactory_repo = 'helloworld'
