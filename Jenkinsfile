@@ -8,7 +8,7 @@ import groovy.json.JsonOutput
 import java.net.URL
 
 //name of local artifactory server
-artifactserver = Artifactory.server 'local_artifactory'
+def server = Artifactory.server 'local_artifactory'
 
 version = null
 
@@ -17,7 +17,7 @@ def artifactory_repo = 'helloworld'
 
 boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
-    //speficy node to build on
+    //specify node to build on
 	node('builder-bob') {
 
 	try {
@@ -51,7 +51,16 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	}
 }
 
-
+//defines artifactory upload spec
+def uploadSpec = """{
+  "files": [
+    {
+      "pattern": "**",
+      "target": "${version}/"
+    }
+ ]
+}"""
+server.upload(uploadSpec)
 
 //fetches "Version_File", read, and pulls version number
 String getVersion() {
