@@ -10,7 +10,7 @@ import java.net.URL
 //name of local artifactory server
 def server = Artifactory.server 'local_artifactory'
 def artifactory_repo = 'helloworld'
-
+def scmUrl = scm.getUserRemoteConfigs()[0].getUrl()
 version = null
 
 properties ([
@@ -18,7 +18,7 @@ properties ([
     buildDiscarder( logRotator(artifactDaysToKeepStr: '',
       artifactNumToKeep: '3',
       daysToKeepStr: '',
-      numToKeepStr: '30') )
+      numToKeepStr: '30') ),
 ])
 
 boolean is_master = ("${env.BRANCH_NAME}" == "master")
