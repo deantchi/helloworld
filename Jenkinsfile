@@ -15,8 +15,8 @@ version = null
 properties ([
     //don't keep build in Jenkins
     buildDiscarder( logRotator(artifactDaysToKeepStr: '',
-      artifactNumToKeep: '3'
-      daysToKeepStr: ''
+      artifactNumToKeep: '3',
+      daysToKeepStr: '',
       numToKeepStr: '30') ),
 
     // set url for diff links to gh
