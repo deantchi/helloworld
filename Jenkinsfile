@@ -51,7 +51,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
           // defines artifactory upload spec
           String path = "${artifactory_repo}/helloworld/${v}-${env.BUILD_NUMBER}"
-          String uploadspec = """{
+          String upload_spec = """{
             "files": [
               {
                 "pattern": "**",
@@ -60,7 +60,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
               }
            ]
           }"""
-          server.upload(uploadSpec)
+          server.upload(upload_spec)
           }
 				}
 			}
