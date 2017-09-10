@@ -12,6 +12,18 @@ def server = Artifactory.server 'local_artifactory'
 
 version = null
 
+properties ([
+    //don't keep build in Jenkins
+    buildDiscarder( logRotator(artifactDaysToKeepStr: '',
+      artifactNumToKeep: '3'
+      daysToKeepStr: ''
+      numToKeepStr: '30') ),
+
+    // set url for diff links to gh
+    [ $class: 'GithubProjectProperty',
+      displayMame: ''
+      projectUrlStr: "${getGitHubURL(scmUrl)}" ]
+])
 //defines artifactory repo
 def artifactory_repo = 'helloworld'
 
