@@ -47,7 +47,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
           // define version and set Jenkins display name
           String v = getVersion()
-          currentBuild.DisplayName = "#${env.BUILD_NUMBER} - v${v}"
+          currentBuild.displayName = "#${env.BUILD_NUMBER} - v${v}"
 
           // defines artifactory upload spec
           String path = "${artifactory_repo}/helloworld/${v}-${env.BUILD_NUMBER}"
