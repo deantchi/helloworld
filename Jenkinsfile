@@ -55,7 +55,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
             "files": [
               {
                 "pattern": "**",
-                "target": "${version}/"
+                "target": "${version}/",
                 "flat": "false"
               }
            ]
