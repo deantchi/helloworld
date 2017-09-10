@@ -33,10 +33,20 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 	String archive_dir = "output"
 	String output_dir = "${archive_dir}/${getVersion()}/files"
 
-
-			stage('Archive in Jenkins') {
+			stage('Archive File') {
 				dir(archive_dir) {
 					archiveArtifacts "**"
+
+          //defines artifactory upload spec
+          def uploadSpec = """{
+            "files": [
+              {
+                "pattern": "**",
+                "target": "${version}/"
+              }
+           ]
+          }"""
+          server.upload(uploadSpec)
 				}
 			}
 
@@ -50,17 +60,6 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
 	}
 }
-
-//defines artifactory upload spec
-def uploadSpec = """{
-  "files": [
-    {
-      "pattern": "**",
-      "target": "${version}/"
-    }
- ]
-}"""
-server.upload(uploadSpec)
 
 //fetches "Version_File", read, and pulls version number
 String getVersion() {
