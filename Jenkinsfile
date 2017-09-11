@@ -1,4 +1,5 @@
 #!/usr/bin/env groovy
+//to kickstart jenkinsjob
 
 import hudson.model.*
 import hudson.EnvVars
