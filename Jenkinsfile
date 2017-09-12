@@ -57,7 +57,7 @@ boolean is_master = ("${env.BRANCH_NAME}" == "master")
           currentBuild.displayName = "#${env.BUILD_NUMBER} - v${v}"
 
           // defines artifactory upload spec
-          String path = "${artifactory_repo}/helloworld/${v}-${env.BUILD_NUMBER}"
+          String path = "${artifactory_repo}/helloworld/${v}-Build_${env.BUILD_NUMBER}"
 
 
           String upload_spec = """{
