@@ -12,7 +12,7 @@ import java.net.URL
 
 //name of local artifactory server
 def server = Artifactory.server 'local_artifactory'
-def artifactory_repo = 'helloworld'
+def artifactory_repo = 'myTest'
 def scmUrl = scm.getUserRemoteConfigs()[0].getUrl()
 version = null
 
