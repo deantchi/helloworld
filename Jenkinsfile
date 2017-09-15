@@ -31,7 +31,7 @@ properties ([
 boolean is_master = ("${env.BRANCH_NAME}" == "master")
 
     //specify node to build on
-	node('builder-bob') {
+	node('kube') {
 
 	try {
 			stage('Clean workspace') {
